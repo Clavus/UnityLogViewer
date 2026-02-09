@@ -14,22 +14,22 @@ namespace LogViewer
         public DocLogFile pageForm { get; private set; }
 
         /// <summary>
-        /// 正在忙碌，不允许其他操作
+        /// is busy and no other operations are allowed
         /// </summary>
         public bool IsBusying { get; private set; }
 
         /// <summary>
-        /// 设备ID列表
+        /// list of device ids
         /// </summary>
         public List<string> DevicesIdList { get; private set; }
 
         /// <summary>
-        /// 设备名称列表
+        /// list of device names
         /// </summary>
         public List<string> DevicesNameList { get; private set; }
 
         /// <summary>
-        /// 暂停接收日志
+        /// pause to receive logs
         /// </summary>
         public bool IsPausing { get; set; }
 
@@ -287,7 +287,7 @@ namespace LogViewer
                     pageForm.TipConnectText(line);
                 }));
             };
-            pageForm.TipConnectText("尝试 connect " + ipPort);
+            pageForm.TipConnectText("Attempt connect to " + ipPort);
 
             Task.Run(() =>
             {

@@ -1,6 +1,7 @@
 ﻿using BrightIdeasSoftware;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -10,6 +11,7 @@ using System.Threading;
 using DarkUI.Docking;
 using DarkUI.Forms;
 using System.Text;
+using Path = System.IO.Path;
 
 namespace LogViewer
 {
@@ -797,7 +799,7 @@ namespace LogViewer
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "All Files|*.*";
             openFileDialog.FileName = "*.*";
-            openFileDialog.Title = "选择日志文件";
+            openFileDialog.Title = "Select log file";
 
             if (openFileDialog.ShowDialog(this) == System.Windows.Forms.DialogResult.Cancel)
             {
@@ -809,17 +811,17 @@ namespace LogViewer
 
         private void menuFileOpenUnityLogTab_Click(object sender, EventArgs e)
         {
-            var dir = @"C:\Users\Administrator\AppData\Local\Unity\Editor";
+            var dir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Unity\Editor");
             if (!System.IO.Directory.Exists(dir))
             {
-                Global.ShowErrorDialog("不存在路径：\n" + dir);
+                Global.ShowErrorDialog("Path not found：\n" + dir);
                 return;
             }
 
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "All Files|*.*";
             openFileDialog.FileName = "*.*";
-            openFileDialog.Title = "选择日志文件";
+            openFileDialog.Title = "Select log file";
             openFileDialog.InitialDirectory = dir;
 
             if (openFileDialog.ShowDialog(this) == System.Windows.Forms.DialogResult.Cancel)
@@ -906,7 +908,7 @@ namespace LogViewer
                 }
             }
 
-            string filePath = System.IO.Path.Combine(Misc.GetApplicationDirectory(), "ADB-Unity-日志.log");
+            string filePath = System.IO.Path.Combine(Misc.GetApplicationDirectory(), "ADB-Unity-Log.log");
             try
             {
                 File.WriteAllText(filePath, String.Empty);
@@ -919,7 +921,7 @@ namespace LogViewer
         }
 
         /// <summary>
-        /// 打开UDP日志
+        /// open the udp log
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -941,7 +943,7 @@ namespace LogViewer
                 }
             }
 
-            string filePath = System.IO.Path.Combine(Misc.GetApplicationDirectory(), "UDP-Unity-日志.log");
+            string filePath = System.IO.Path.Combine(Misc.GetApplicationDirectory(), "UDP-Unity-Log.log");
             try
             {
                 File.WriteAllText(filePath, String.Empty);

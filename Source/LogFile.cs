@@ -133,8 +133,8 @@ namespace LogViewer
                     int charCount;
                     // Return value from IndexOf function
                     int indexOf;
-                    bool isTiny = false;    // 一种日志格式
-                    int inFormatTimeStart = -1; // 一种日志格式，以时间起始
+                    bool isTiny = false;    // a log format
+                    int inFormatTimeStart = -1; // a log format that starts with time
 
                     while (position < this.fileStream.Length)
                     {
@@ -175,7 +175,7 @@ namespace LogViewer
 
                                     int newStartOffset = 0;
                                     Global.LogType logType = Global.LogType.Info;
-                                    // ConsoleTiny 的解析
+                                    // ConsoleTiny analysis
                                     if (indexOf - startIndex > 13 && tempStr[startIndex + 9] == '-' &&
                                         tempStr[startIndex + 7] == 't')
                                     {
@@ -199,11 +199,11 @@ namespace LogViewer
                                         }
                                     }
 
-                                    // 第一行来检测是否B日志格式
+                                    // the first line to check if it is in b log format
                                     if (inFormatTimeStart == -1 && newStartOffset != 13 && !isTiny)
                                     {
                                         inFormatTimeStart = 0;
-                                        // 格式：2022/06/01 06:11:54
+                                        // format：2022/06/01 06:11:54
                                         if (indexOf - startIndex > 19 && tempStr[startIndex + 10] == ' ' && tempStr[startIndex + 19] == ' ')
                                         {
                                             var timeStr = tempStr.Substring(startIndex, 19);
@@ -217,7 +217,7 @@ namespace LogViewer
 
                                     if (inFormatTimeStart == 1)
                                     {
-                                        // 每条日志以统一格式开头，否则都是堆栈
+                                        // Each log starts with a uniform format, otherwise it's a stack
                                         if (indexOf - startIndex > 19 && tempStr[startIndex + 10] == ' ' && tempStr[startIndex + 19] == ' ')
                                         {
                                             if (tempStr[startIndex + 20] == 'L' && tempStr[startIndex + 23] == ':')
@@ -246,10 +246,10 @@ namespace LogViewer
                                             AppendLineStackTrace(lineStartOffset, charCount + (curCr ? 1 : 0), false);
                                         }
                                     }
-                                    // 不是tiny格式的话，就当做unity默认的
+                                    // If it is not in tiny format, it will be regarded as the default for unity
                                     else if (newStartOffset != 13 && !isTiny)
                                     {
-                                        // unity格式不以当行结尾是否cr来判断，而是以下一行是否\r空行来判断
+                                        // The unity format is not judged by whether the current line ends with cr or not, but by whether the next line is empty
                                         if (charCount == 0)
                                         {
                                             SetLastLineCr();
@@ -297,7 +297,7 @@ namespace LogViewer
                                     }
                                     else
                                     {
-                                        // 不能以换行符来作为新行，因为tiny都是有标记，所以按标记就可以，这样就可以显示日志带换行的
+                                        // You can't use line breaks as new lines, because tiny is marked, so you can press the markup, so you can display the log with line breaks
                                         if (newStartOffset == 13)
                                         {
                                             SetLastLineCr();
@@ -488,7 +488,7 @@ namespace LogViewer
                             }
                         }
 
-                        // 条件符合
+                        // conditions are met
                         if (ll.IsTerms && !string.IsNullOrEmpty(CurSearch.Pattern))
                         {
                             if (string.IsNullOrEmpty(line))
@@ -569,7 +569,7 @@ namespace LogViewer
         }
 
         /// <summary>
-        /// 对后面新增的也进行搜索
+        /// search for the new ones that follow
         /// </summary>
         /// <param name="numContextLines"></param>
         public void SearchNewLines<T>(List<T> newLines) where T : AdbClient.BaseLine
@@ -650,7 +650,7 @@ namespace LogViewer
                             }
                         }
 
-                        // 条件符合
+                        // conditions are met
                         if (ll.IsTerms && !string.IsNullOrEmpty(CurSearch.Pattern))
                         {
                             if (string.IsNullOrEmpty(line))
@@ -741,9 +741,9 @@ namespace LogViewer
             OLVColumn colLineNumber = ((OLVColumn)(new OLVColumn()));
             OLVColumn colText = ((OLVColumn)(new OLVColumn()));
 
-            colLineNumber.Text = "行号";
+            colLineNumber.Text = "Line";
             colLineNumber.Width = 58;
-            colText.Text = "日志";
+            colText.Text = "Log";
             colText.FillsFreeSpace = true;
 
             colLineNumber.AspectGetter = delegate (object x)
@@ -1843,8 +1843,6 @@ namespace LogViewer
         }
 
         const string textBeforeFilePath = ") (at ";
-        const string fileInBuildSlave = "C:/buildslave/unity/";
-        const string fileInBuildSlave2 = "D:/unity/";
         const string fileNameStartStr = "(Filename: ";
 
         private bool ShowLineStackTraceCSharp(string line)
@@ -1896,7 +1894,7 @@ namespace LogViewer
             string fileString = String.Empty;
             string fileNameString = String.Empty;
             string fileLineString = String.Empty;
-            // 工具不要显示暗色，容易看不见内容，以及大部分都是没带文件，会被误以为内部源码
+            // Tools should not display dark colors, easily lose sight of content, and most of them are not filed, which can be mistaken for internal source code
             bool alphaColor = false;
 
             int filePathIndex = line.IndexOf(textBeforeFilePath, argsLastIndex, StringComparison.Ordinal);

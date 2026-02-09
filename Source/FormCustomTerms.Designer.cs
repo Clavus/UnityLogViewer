@@ -73,7 +73,7 @@
             this.darkSectionPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.darkSectionPanel2.Location = new System.Drawing.Point(0, 0);
             this.darkSectionPanel2.Name = "darkSectionPanel2";
-            this.darkSectionPanel2.SectionHeader = "过滤列表";
+            this.darkSectionPanel2.SectionHeader = "filter the list";
             this.darkSectionPanel2.Size = new System.Drawing.Size(492, 246);
             this.darkSectionPanel2.TabIndex = 0;
             // 
@@ -123,7 +123,7 @@
             this.darkSectionPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.darkSectionPanel1.Location = new System.Drawing.Point(0, 0);
             this.darkSectionPanel1.Name = "darkSectionPanel1";
-            this.darkSectionPanel1.SectionHeader = "新增过滤";
+            this.darkSectionPanel1.SectionHeader = "added filtering";
             this.darkSectionPanel1.Size = new System.Drawing.Size(492, 83);
             this.darkSectionPanel1.TabIndex = 0;
             // 
@@ -135,7 +135,7 @@
             this.darkButtonAdd.Padding = new System.Windows.Forms.Padding(5);
             this.darkButtonAdd.Size = new System.Drawing.Size(75, 39);
             this.darkButtonAdd.TabIndex = 2;
-            this.darkButtonAdd.Text = "新增";
+            this.darkButtonAdd.Text = "add";
             this.darkButtonAdd.Click += new System.EventHandler(this.darkButtonAdd_Click);
             // 
             // darkComboBoxAdd
@@ -170,7 +170,7 @@
             this.ClientSize = new System.Drawing.Size(512, 381);
             this.Controls.Add(this.panel1);
             this.DialogButtons = DarkUI.Forms.DarkDialogButton.OkCancel;
-            this.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(528, 419);
@@ -178,7 +178,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "自定义过滤";
+            this.Text = "custom filtering";
             this.Load += new System.EventHandler(this.FormCustomTerms_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.panel1.ResumeLayout(false);

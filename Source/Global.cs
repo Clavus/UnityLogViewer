@@ -42,7 +42,7 @@ namespace LogViewer
         public static DialogResult ShowErrorDialog(
             string message)
         {
-            using (DarkMessageBoxDpi darkMessageBox = new DarkMessageBoxDpi(message, "提示", DarkMessageBoxIcon.Error, DarkDialogButton.Ok))
+            using (DarkMessageBoxDpi darkMessageBox = new DarkMessageBoxDpi(message, "tips", DarkMessageBoxIcon.Error, DarkDialogButton.Ok))
             {
                 return darkMessageBox.ShowDialog();
             }

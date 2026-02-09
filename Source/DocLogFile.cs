@@ -100,13 +100,13 @@ namespace LogViewer
         {
             if (adb != null)
             {
-                throw new Exception("重复创建");
+                throw new Exception("duplicate setup");
             }
             if (Log.IsAdbLog)
             {
                 ClearAdbDevicesList();
                 DisconnectAdbDevice();
-                GetToolStripStatusLabel().Text = "查找设备中...";
+                GetToolStripStatusLabel().Text = "find the device...";
 
                 adb = new AdbClient(this);
                 adb.GetDevices();
@@ -117,7 +117,7 @@ namespace LogViewer
         {
             if (udp != null)
             {
-                throw new Exception("重复创建");
+                throw new Exception("duplicate setup");
             }
             if (Log.IsUdpLog)
             {
@@ -214,7 +214,7 @@ namespace LogViewer
         private void InitListFont()
         {
             highlightTextRendererLog = new HighlightTextColorRenderer();
-            highlightTextRendererLog.UseRoundedRectangle = false;   // 匹配框是矩形，而不是圆角
+            highlightTextRendererLog.UseRoundedRectangle = false;   // The matching box is a rectangle, not a rounded corner
 
             if (listFont == null)
             {
@@ -224,10 +224,10 @@ namespace LogViewer
                     try
                     {
                         pfc = new System.Drawing.Text.PrivateFontCollection();
-                        pfc.AddFontFile(path);//字体文件的路径
+                        pfc.AddFontFile(path);//the path to the font file
                         listFont = new Font(pfc.Families[0], 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                        highlightTextRendererLog.UseGdiTextRendering = false; // 使用GDI+更清晰，但是查找字符的时候，需要字体包含中文，否则定位不到位置
-                        //this.richTextBoxStrace.Font = listFont; 不要设置rich的字体，会导致行间距变大
+                        highlightTextRendererLog.UseGdiTextRendering = false; // Using GDI+ is clearer, but when looking for characters, the font needs to contain Chinese, otherwise the position cannot be located
+                        //this.richTextBoxStrace.Font = listFont; Don't set the font for rich, it will cause the line spacing to be larger
                     }
                     catch (System.Exception)
                     {
@@ -238,7 +238,7 @@ namespace LogViewer
                 if (listFont == null)
                 {
                     //listFont = new Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                    listFont = this.richTextBoxStrace.Font; // 一样的字体
+                    listFont = this.richTextBoxStrace.Font; // same font
                 }
             }
 
@@ -279,7 +279,7 @@ namespace LogViewer
         {
             if (string.IsNullOrEmpty(this.toolStripTextBoxSearch.Text))
             {
-                this.toolStripTextBoxSearch.Text = "键入搜索内容后回车";
+                this.toolStripTextBoxSearch.Text = "type your search and press enter";
                 this.toolStripTextBoxSearch.ForeColor = Color.Gray;
                 searchHasText = false;
             }
@@ -530,7 +530,7 @@ namespace LogViewer
                 item.Click += new System.EventHandler(this.toolStripButtonAdbChooseDevice_Click);
                 this.toolStripDropDownButtonAdbDevices.DropDownItems.Add(item);
             }
-            GetToolStripStatusLabel().Text = "发现设备数量： " + adb.DevicesNameList.Count;
+            GetToolStripStatusLabel().Text = "discover the number of devices： " + adb.DevicesNameList.Count;
 
             if (adb.DevicesNameList.Count > 0)
             {
@@ -540,7 +540,7 @@ namespace LogViewer
 
         private void ClearAdbDevicesList()
         {
-            this.toolStripDropDownButtonAdbDevices.Text = "空设备";
+            this.toolStripDropDownButtonAdbDevices.Text = "empty equipment";
             this.toolStripDropDownButtonAdbDevices.DropDownItems.Clear();
         }
 
@@ -549,13 +549,13 @@ namespace LogViewer
             adb.IsPausing = false;
             DisconnectAdbDevice();
             this.toolStripDropDownButtonAdbDevices.Text = adb.DevicesNameList[idx];
-            GetToolStripStatusLabel().Text = "尝试连接设备： " + this.toolStripDropDownButtonAdbDevices.Text;
+            GetToolStripStatusLabel().Text = "try connecting the device： " + this.toolStripDropDownButtonAdbDevices.Text;
             adb.ChooseDevice(idx);
         }
 
         public void DisconnectAdbDevice()
         {
-            GetToolStripStatusLabel().Text = "设备断开连接 ";
+            GetToolStripStatusLabel().Text = "the device is disconnected ";
             this.toolStripButtonPauseAdbLog.Visible = false;
             this.toolStripButtonResumeAdbLog.Visible = false;
             this.toolStripButtonClearAdbLog.Visible = false;
@@ -569,7 +569,7 @@ namespace LogViewer
             this.toolStripButtonResumeAdbLog.Visible = false;
             this.toolStripButtonClearAdbLog.Visible = true;
             this.toolStripButtonPicAdbLog.Visible = true;
-            GetToolStripStatusLabel().Text = "连接设备中： " + this.toolStripDropDownButtonAdbDevices.Text;
+            GetToolStripStatusLabel().Text = "connected to the device： " + this.toolStripDropDownButtonAdbDevices.Text;
         }
 
         public void SetAdbPicEnable(bool isEnabled)
@@ -606,7 +606,7 @@ namespace LogViewer
 
         private void toolStripButtonAdbRefresh_Click(object sender, EventArgs e)
         {
-            GetToolStripStatusLabel().Text = "刷新设备中...";
+            GetToolStripStatusLabel().Text = "Refresh the device...";
             adb.GetDevices();
         }
 

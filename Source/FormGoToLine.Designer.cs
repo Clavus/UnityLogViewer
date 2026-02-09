@@ -45,7 +45,7 @@ namespace LogViewer
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 19);
             this.label1.TabIndex = 0;
-            this.label1.Text = "行号";
+            this.label1.Text = "Line";
             // 
             // textLineNum
             // 
@@ -67,7 +67,7 @@ namespace LogViewer
             this.buttonCancel.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.buttonCancel.Size = new System.Drawing.Size(75, 35);
             this.buttonCancel.TabIndex = 3;
-            this.buttonCancel.Text = "取消";
+            this.buttonCancel.Text = "cancel";
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // buttonOK
@@ -79,7 +79,7 @@ namespace LogViewer
             this.buttonOK.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.buttonOK.Size = new System.Drawing.Size(75, 35);
             this.buttonOK.TabIndex = 2;
-            this.buttonOK.Text = "确定";
+            this.buttonOK.Text = "ok";
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
             // FormGoToLine
@@ -93,7 +93,7 @@ namespace LogViewer
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.textLineNum);
             this.Controls.Add(this.label1);
-            this.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -101,7 +101,7 @@ namespace LogViewer
             this.Name = "FormGoToLine";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "跳转行";
+            this.Text = "jump to line";
             this.ResumeLayout(false);
             this.PerformLayout();
 

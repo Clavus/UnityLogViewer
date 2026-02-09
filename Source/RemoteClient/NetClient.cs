@@ -96,7 +96,7 @@ namespace LogViewer
             }
             catch (Exception e)
             {
-                Global.ShowErrorDialog($"UDP 创建链接失败，端口 {22234}，原因：{e.Message}");
+                Global.ShowErrorDialog($"UDP link creation failed port {22234}，reason：{e.Message}");
                 pageForm.Close();
                 return;
             }
@@ -108,7 +108,7 @@ namespace LogViewer
             }
             catch (Exception e)
             {
-                Global.ShowErrorDialog($"UDP 创建链接失败，端口 {22235}，原因：{e.Message}");
+                Global.ShowErrorDialog($"UDP link creation failed port {22235}，reason：{e.Message}");
             }
             tickTimer = new Timer(30);
             tickTimer.Elapsed += TickTimerOnElapsed;
@@ -190,7 +190,7 @@ namespace LogViewer
             }
             else
             {
-                Global.ShowErrorDialog("非有效的IP地址");
+                Global.ShowErrorDialog("invalid ip address");
             }
 
             return false;
@@ -214,7 +214,7 @@ namespace LogViewer
             }
             ackTimer.Start();
 
-            // 启动的时候，每秒去发送握手到对方，直到收到对方的任意消息
+            // When activated, send a handshake to the other party every second until you receive any message from the other party
             SendAckToRemoteInter();
         }
 
@@ -233,7 +233,7 @@ namespace LogViewer
 
                 pageForm.BeginInvoke(new Action(() =>
                 {
-                    pageForm.TipConnectText($"尝试连接目标：{endPoint}  \t 发送请求时间：{DateTime.Now}");
+                    pageForm.TipConnectText($"try connecting the target：{endPoint}  \t send request time：{DateTime.Now}");
                 }));
             }
             catch (Exception e)
@@ -242,7 +242,7 @@ namespace LogViewer
                 {
                     ackTimer.Stop();
                 }
-                pageForm.BeginInvoke(new Action(() => { Global.ShowErrorDialog("尝试连接目标异常，原因：" + e.Message); }));
+                pageForm.BeginInvoke(new Action(() => { Global.ShowErrorDialog("attempt to connect to the target exception cause：" + e.Message); }));
             }
         }
 
